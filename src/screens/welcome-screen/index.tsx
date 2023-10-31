@@ -9,9 +9,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const WelcomeScreen = () => {
   const navigation = useNavigation<AuthScreenNavigationType<"Welcome">>();
-  const navigateTosignInScreen = () => {
-    navigation.navigate("SignIn");
-  };
+
   const navigateTosignUpScreen = () => {
     navigation.navigate("SignUp");
   };
