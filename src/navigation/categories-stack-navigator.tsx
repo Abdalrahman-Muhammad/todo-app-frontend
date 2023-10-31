@@ -1,6 +1,6 @@
 import CategoriesScreen from "@/screens/categories-screen";
 import CategoryScreen from "@/screens/category-screen";
-import EditTaskScreen from "@/screens/edit-task";
+import CreateCategoryScreen from "@/screens/create-category-screen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { StyleSheet } from "react-native";
@@ -27,7 +27,7 @@ const CategoriesStackNavigator = () => {
       />
       <Stack.Screen
         name="CreateCategory"
-        component={EditTaskScreen}
+        component={CreateCategoryScreen}
         options={{
           headerShown: false,
         }}

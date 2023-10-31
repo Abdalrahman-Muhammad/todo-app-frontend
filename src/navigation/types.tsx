@@ -18,7 +18,9 @@ export type RootBottomTabParamList = {
 
 export type HomeStackParamList = {
   Home: undefined;
-  EditTask: undefined;
+  EditTask: {
+    task: ITask;
+  };
 };
 
 export type CategoriesStackParamList = {
@@ -27,7 +29,7 @@ export type CategoriesStackParamList = {
     id: string;
   };
   CreateCategory: {
-    id?: string;
+    category?: ICategory;
   };
 };
 
@@ -53,3 +55,9 @@ export type AuthScreenNavigationType<
   NativeStackNavigationProp<AuthStackParamList, RouterName>,
   NativeStackNavigationProp<AppsStackParamList, "Root">
 >;
+
+export type CategoriesNavigationType =
+  NativeStackNavigationProp<CategoriesStackParamList>;
+
+export type HomeScreenNavigationType =
+  NativeStackNavigationProp<HomeStackParamList>;

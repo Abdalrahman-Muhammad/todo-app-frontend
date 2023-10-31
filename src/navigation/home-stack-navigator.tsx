@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { HomeStackParamList } from "./types";
-import EditTaskScreen from "@/screens/edit-task";
+import EditTaskScreen from "@/screens/edit-task-screen";
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
