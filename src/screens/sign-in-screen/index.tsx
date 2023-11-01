@@ -1,7 +1,7 @@
 import Button from "@/components/shared/Button";
 import { Box, Text } from "@/utils/theme";
-import React from "react";
-import { Pressable, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { ActivityIndicator, Pressable, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 import { AuthScreenNavigationType } from "@/navigation/types";
@@ -11,8 +11,10 @@ import { LoginUser } from "@/services/api";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "@/store/userActions";
 import { AppDispatch, RootState } from "@/store/store";
+import Loader from "@/components/shared/Loader";
 
 const SignInScreen = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const user = useSelector((state: RootState) => state.user.user);
   const dispatch = useDispatch<AppDispatch>();
   const navigation = useNavigation<AuthScreenNavigationType<"SignIn">>();
@@ -33,6 +35,7 @@ const SignInScreen = () => {
 
   const onSubmit = async (data: Omit<IUser, "name">) => {
     try {
+      setIsLoading(true);
       const { email, password } = data;
       const _user = await LoginUser({ email, password });
       dispatch(
@@ -41,7 +44,9 @@ const SignInScreen = () => {
           name: _user.name,
         })
       );
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.log("error in login submit", error);
     }
   };
@@ -98,6 +103,13 @@ const SignInScreen = () => {
         <Box mb="6" />
 
         <Button label="Login" onPress={handleSubmit(onSubmit)} upperCase />
+
+        {isLoading ? (
+          <Box style={{ marginTop: 20 }}>
+            <ActivityIndicator size="large" color="#007AFF" />
+            <Text>Signing in...</Text>
+          </Box>
+        ) : null}
       </Box>
     </SafeAreaWrapper>
   );

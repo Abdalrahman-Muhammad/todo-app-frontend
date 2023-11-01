@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 
-export const BASE_URL = "http://192.168.1.3:8000/";
+export const BASE_URL = "http://192.168.1.12:8000/";
 
 const TIME_OUT = 30000;
 export const TOKEN = "user_token";
