@@ -64,10 +64,12 @@ const Task = ({ task, mutateTasks }: TaskProps) => {
             alignItems="center"
             justifyContent="center"
           >
-            <Ionicons name="ios-checkmark" size={20} color="white" />
+            {task.isCompleted && (
+              <Ionicons name="ios-checkmark" size={20} color="white" />
+            )}
           </Box>
 
-          <Text ml="3" variant="textSm">
+          <Text ml="3" variant="textXs">
             {task.name}
           </Text>
         </Box>

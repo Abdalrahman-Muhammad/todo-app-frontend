@@ -8,6 +8,7 @@ import { FlatList } from "react-native";
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
 import useSWR from "swr";
+import TaskActions from "@/components/tasks/task-actions";
 
 const HomeScreen = () => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -27,6 +28,9 @@ const HomeScreen = () => {
         <Box height={26} />
         <Text variant="text3Xl">Hello, {user?.name}</Text>
         <Box height={26} />
+        <Box mb="5">
+          <TaskActions categoryId="" />
+        </Box>
         <FlatList
           data={tasks}
           renderItem={({ item }) => (

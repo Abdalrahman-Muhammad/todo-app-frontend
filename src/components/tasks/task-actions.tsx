@@ -117,6 +117,7 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
           }}
           onSubmitEditing={onCreateTask}
         />
+
         <Box flexDirection="row" alignItems="center">
           <Pressable
             onPress={() => {
@@ -167,6 +168,18 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
               >
                 {selectedCategory?.name}
               </Text>
+            </Box>
+          </Pressable>
+          <Pressable onPress={onCreateTask}>
+            <Box
+              bg="white"
+              flexDirection="row"
+              alignItems="center"
+              p="2"
+              borderRadius="rounded-xl"
+              ml="2"
+            >
+              <Text>Add</Text>
             </Box>
           </Pressable>
         </Box>
