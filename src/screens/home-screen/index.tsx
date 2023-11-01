@@ -28,9 +28,7 @@ const HomeScreen = () => {
         <Box height={26} />
         <Text variant="text3Xl">Hello, {user?.name}</Text>
         <Box height={26} />
-        <Box mb="5">
-          <TaskActions categoryId="" />
-        </Box>
+
         <FlatList
           data={tasks}
           renderItem={({ item }) => (
