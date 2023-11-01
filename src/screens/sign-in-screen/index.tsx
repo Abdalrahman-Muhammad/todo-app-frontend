@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "@/store/userActions";
 import { AppDispatch, RootState } from "@/store/store";
 import Loader from "@/components/shared/Loader";
+import { validateEmail } from "../sign-up-screen";
 
 const SignInScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +27,7 @@ const SignInScreen = () => {
     control,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<Omit<IUser, "name">>({
     defaultValues: {
       email: "",
@@ -37,6 +39,17 @@ const SignInScreen = () => {
     try {
       setIsLoading(true);
       const { email, password } = data;
+
+      if (!validateEmail(email)) {
+        console.log("Invalid email format");
+        setError("email", {
+          type: "manual",
+          message: "Invalid email format",
+        });
+        setIsLoading(false);
+        return;
+      }
+
       const _user = await LoginUser({ email, password });
       dispatch(
         updateUser({
